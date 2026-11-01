@@ -1,0 +1,583 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: theblue.email Forms 1.0.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/theblue-email-forms\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2026-11-01 00:00+0000\n"
+"X-Domain: theblue-email-forms\n"
+"Language: pl_PL\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : 2);\n"
+
+#: theblue-email-forms.php
+msgid "theblue.email Forms"
+msgstr "theblue.email Forms"
+
+#: theblue-email-forms.php
+msgid "Place your theblue.email signup forms on your site with a block or a shortcode, and collect newsletter signups from Gravity Forms and Contact Form 7."
+msgstr "Umieszczaj formularze zapisu theblue.email na swojej stronie za pomocą bloku lub shortcode i zbieraj zapisy do newslettera z Gravity Forms oraz Contact Form 7."
+
+#: blocks/form/block.json
+msgctxt "block title"
+msgid "theblue.email form"
+msgstr "Formularz theblue.email"
+
+#: blocks/form/block.json
+msgctxt "block description"
+msgid "A signup form from your theblue.email account."
+msgstr "Formularz zapisu z Twojego konta theblue.email."
+
+#: blocks/form/block.json
+msgctxt "block keyword"
+msgid "newsletter"
+msgstr "newsletter"
+
+#: blocks/form/block.json
+msgctxt "block keyword"
+msgid "signup"
+msgstr "zapis"
+
+#: blocks/form/block.json
+msgctxt "block keyword"
+msgid "subscribe"
+msgstr "subskrybuj"
+
+#: blocks/form/block.json
+msgctxt "block keyword"
+msgid "email"
+msgstr "e-mail"
+
+#: includes/class-privacy.php:34
+msgid "Newsletter signup forms on this site are provided by theblue.email. When you open a page with such a form, your browser loads the form and its script from theblue.email. When you sign up, the address and first name you enter are sent to theblue.email, together with your IP address and the page you signed up on, and you receive an email asking you to confirm. You join the newsletter only once you confirm."
+msgstr "Formularze zapisu do newslettera na tej stronie dostarcza theblue.email. Gdy otwierasz stronę z takim formularzem, Twoja przeglądarka pobiera formularz i jego skrypt z theblue.email. Gdy się zapisujesz, podany adres i imię trafiają do theblue.email wraz z Twoim adresem IP i adresem strony, na której się zapisujesz, a Ty dostajesz e-mail z prośbą o potwierdzenie. Do newslettera dołączasz dopiero po potwierdzeniu."
+
+#: includes/class-privacy.php:35
+msgid "If you tick a newsletter box on another form of this site (for example a contact or order form), the same details are sent to theblue.email from this site's server after you submit it."
+msgstr "Jeśli zaznaczysz pole zapisu do newslettera w innym formularzu tej strony (na przykład kontaktowym lub zamówienia), te same dane trafią do theblue.email z serwera tej strony po wysłaniu formularza."
+
+#. translators: %s: link to the theblue.email privacy policy.
+#: includes/class-privacy.php:39
+#, php-format
+msgid "How theblue.email processes these details: %s."
+msgstr "Jak theblue.email przetwarza te dane: %s."
+
+#: includes/class-site-health.php:44
+msgid "theblue.email connection"
+msgstr "Połączenie z theblue.email"
+
+#: includes/class-site-health.php:58
+msgid "This site is connected to theblue.email"
+msgstr "Ta strona jest połączona z theblue.email"
+
+#: includes/class-site-health.php:61 includes/class-settings-page.php:60 includes/class-settings-page.php:61 includes/class-settings-page.php:227
+msgid "theblue.email"
+msgstr "theblue.email"
+
+#: includes/class-site-health.php:64
+msgid "Forms and signups from Gravity Forms and Contact Form 7 reach your theblue.email account."
+msgstr "Formularze i zapisy z Gravity Forms oraz Contact Form 7 trafiają na Twoje konto theblue.email."
+
+#: includes/class-site-health.php:65 includes/integrations/class-contact-form-7.php:171 includes/integrations/class-gravity-forms-addon.php:150
+msgid "Settings, theblue.email"
+msgstr "Ustawienia, theblue.email"
+
+#: includes/class-site-health.php:70
+msgid "This site is not connected to theblue.email"
+msgstr "Ta strona nie jest połączona z theblue.email"
+
+#: includes/class-site-health.php:72
+msgid "Connect a Website key to place forms and pass on signups."
+msgstr "Połącz klucz witryny, aby umieszczać formularze i przekazywać zapisy."
+
+#: includes/class-site-health.php:79
+msgid "theblue.email does not answer this site"
+msgstr "theblue.email nie odpowiada tej stronie"
+
+#: includes/class-protection.php:36
+msgid "Leave this field empty"
+msgstr "Zostaw to pole puste"
+
+#: includes/class-client.php:97
+msgid "This site is not connected to theblue.email."
+msgstr "Ta strona nie jest połączona z theblue.email."
+
+#: includes/class-client.php:101
+msgid "Invalid request."
+msgstr "Nieprawidłowe żądanie."
+
+#. translators: %s: the error from the HTTP library.
+#: includes/class-client.php:129
+#, php-format
+msgid "Could not reach theblue.email: %s"
+msgstr "Nie udało się połączyć z theblue.email: %s"
+
+#: includes/class-client.php:137
+msgid "theblue.email sent an unexpected answer."
+msgstr "theblue.email przesłał nieoczekiwaną odpowiedź."
+
+#. translators: %d: HTTP status code.
+#: includes/class-client.php:160
+#, php-format
+msgid "theblue.email answered with an error (%d)."
+msgstr "theblue.email odpowiedział błędem (%d)."
+
+#: includes/class-notices.php:52
+msgid "theblue.email Forms is active. Connect your theblue.email account to place your forms."
+msgstr "Wtyczka theblue.email Forms jest aktywna. Połącz konto theblue.email, aby umieszczać swoje formularze."
+
+#: includes/class-notices.php:52 includes/class-settings-page.php:295 blocks/form/editor.js:80
+msgid "Connect"
+msgstr "Połącz"
+
+#: includes/class-notices.php:62
+msgid "theblue.email no longer accepts this site's key, so new signups from Gravity Forms and Contact Form 7 are not being sent."
+msgstr "theblue.email nie akceptuje już klucza tej strony, więc nowe zapisy z Gravity Forms i Contact Form 7 nie są wysyłane."
+
+#: includes/class-notices.php:62
+msgid "Fix the connection"
+msgstr "Napraw połączenie"
+
+#. translators: 1: comma-separated form names, 2: this site's hostname.
+#: includes/class-notices.php:79
+#, php-format
+msgid "These theblue.email forms are placed on your pages but do not allow %2$s, so visitors see a short message instead: %1$s."
+msgstr "Te formularze theblue.email są umieszczone na Twoich stronach, ale nie dopuszczają %2$s, więc odwiedzający widzą zamiast nich krótki komunikat: %1$s."
+
+#: includes/class-notices.php:83 includes/class-settings-page.php:364 blocks/form/editor.js:114
+msgid "Allow this site"
+msgstr "Dopuść tę stronę"
+
+#: includes/class-settings-page.php:80
+msgid "Settings"
+msgstr "Ustawienia"
+
+#: includes/class-settings-page.php:113
+msgid "That does not look like a theblue.email key. It starts with tbe_ followed by 32 letters and digits."
+msgstr "To nie wygląda na klucz theblue.email. Zaczyna się od tbe_, po którym następują 32 litery i cyfry."
+
+#: includes/class-settings-page.php:123
+msgid "This server cannot encrypt the key (it needs the sodium or OpenSSL PHP extension)."
+msgstr "Ten serwer nie może zaszyfrować klucza (potrzebne jest rozszerzenie PHP sodium lub OpenSSL)."
+
+#: includes/class-settings-page.php:130
+msgid "Connected. Your forms are listed below."
+msgstr "Połączono. Twoje formularze są wymienione poniżej."
+
+#: includes/class-settings-page.php:131
+msgid "Connected, but the forms could not be loaded yet. Use Refresh forms."
+msgstr "Połączono, ale nie udało się jeszcze wczytać formularzy. Użyj opcji Odśwież formularze."
+
+#: includes/class-settings-page.php:142
+msgid "Disconnected. Forms already placed on pages keep working; revoke the key in theblue.email if you no longer need it."
+msgstr "Rozłączono. Formularze umieszczone już na stronach nadal działają. Jeśli klucz nie jest już potrzebny, unieważnij go w theblue.email."
+
+#: includes/class-settings-page.php:151
+msgid "Forms refreshed."
+msgstr "Formularze odświeżone."
+
+#: includes/class-settings-page.php:164
+msgid "Form not found."
+msgstr "Nie znaleziono formularza."
+
+#: includes/class-settings-page.php:175
+msgid "Activity cleared."
+msgstr "Wyczyszczono aktywność."
+
+#: includes/class-settings-page.php:185
+msgid "You do not have permission to do that."
+msgstr "Nie masz uprawnień do tej czynności."
+
+#: includes/class-settings-page.php:275
+msgid "Connect your theblue.email account"
+msgstr "Połącz swoje konto theblue.email"
+
+#: includes/class-settings-page.php:278
+msgid "The stored key can no longer be read, usually because the site's security keys changed. Paste the key again."
+msgstr "Zapisanego klucza nie da się już odczytać, zwykle dlatego, że zmieniły się klucze bezpieczeństwa strony. Wklej klucz ponownie."
+
+#. translators: %s: link to theblue.email.
+#: includes/class-settings-page.php:285
+#, php-format
+msgid "In %s, open Integrations and generate a <strong>Website key</strong>. It works on every plan."
+msgstr "W %s otwórz Integracje i wygeneruj <strong>klucz witryny</strong>. Działa w każdym planie."
+
+#: includes/class-settings-page.php:289
+msgid "Paste it here and connect."
+msgstr "Wklej go tutaj i połącz."
+
+#: includes/class-settings-page.php:293
+msgid "Website key"
+msgstr "Klucz witryny"
+
+#: includes/class-settings-page.php:298
+msgid "The key is stored encrypted and is never shown again in full. A Website key can only read your forms, allow this site on them and pass on signups; it cannot read your subscribers or send email."
+msgstr "Klucz jest przechowywany w postaci zaszyfrowanej i nigdy więcej nie jest pokazywany w całości. Klucz witryny może tylko odczytać Twoje formularze, dopuścić na nich tę stronę i przekazywać zapisy. Nie może odczytać Twoich subskrybentów ani wysyłać e-maili."
+
+#: includes/class-settings-page.php:308
+msgid "Connection"
+msgstr "Połączenie"
+
+#: includes/class-settings-page.php:311
+msgid "theblue.email no longer accepts this key. It may have been revoked. Disconnect and connect again with a new Website key."
+msgstr "theblue.email nie akceptuje już tego klucza. Mógł zostać unieważniony. Rozłącz i połącz ponownie, używając nowego klucza witryny."
+
+#: includes/class-settings-page.php:315
+msgid "Account"
+msgstr "Konto"
+
+#: includes/class-settings-page.php:316
+msgid "Plan"
+msgstr "Plan"
+
+#: includes/class-settings-page.php:317
+msgid "Key"
+msgstr "Klucz"
+
+#: includes/class-settings-page.php:318 includes/class-settings-page.php:347
+msgid "This site"
+msgstr "Ta strona"
+
+#: includes/class-settings-page.php:322 blocks/form/editor.js:126
+msgid "Refresh forms"
+msgstr "Odśwież formularze"
+
+#: includes/class-settings-page.php:325
+msgid "Disconnect"
+msgstr "Rozłącz"
+
+#: includes/class-settings-page.php:335
+msgid "Your forms"
+msgstr "Twoje formularze"
+
+#: includes/class-settings-page.php:336
+msgid "Add the \"theblue.email form\" block to a page, or paste a shortcode. A form shows only on sites on its allowed domains."
+msgstr "Dodaj do strony blok „Formularz theblue.email” albo wklej shortcode. Formularz wyświetla się tylko na stronach z listy jego dopuszczonych domen."
+
+#: includes/class-settings-page.php:339
+msgid "No forms yet. Create one under Forms in theblue.email, then refresh."
+msgstr "Nie ma jeszcze formularzy. Utwórz formularz w sekcji Formularze w theblue.email, a potem odśwież."
+
+#: includes/class-settings-page.php:344 includes/class-settings-page.php:427 blocks/form/editor.js:102
+msgid "Form"
+msgstr "Formularz"
+
+#: includes/class-settings-page.php:345
+msgid "Status"
+msgstr "Status"
+
+#: includes/class-settings-page.php:346
+msgid "List"
+msgstr "Lista"
+
+#: includes/class-settings-page.php:348
+msgid "Shortcode"
+msgstr "Shortcode"
+
+#: includes/class-settings-page.php:356
+msgid "Live"
+msgstr "Aktywny"
+
+#: includes/class-settings-page.php:356
+msgid "Draft"
+msgstr "Wersja robocza"
+
+#: includes/class-settings-page.php:360
+msgid "Allowed"
+msgstr "Dopuszczona"
+
+#: includes/class-settings-page.php:368
+msgid "Copy"
+msgstr "Kopiuj"
+
+#. translators: %s: how long ago, e.g. 5 mins.
+#: includes/class-settings-page.php:376
+#, php-format
+msgid "Loaded %s ago."
+msgstr "Wczytano %s temu."
+
+#: includes/class-settings-page.php:386
+msgid "Signups from other form plugins"
+msgstr "Zapisy z innych wtyczek formularzy"
+
+#: includes/class-settings-page.php:387
+msgid "Send the people who fill in a contact, order or registration form to a theblue.email form. Each signup gets the same protection as a theblue.email form: a hidden honeypot field, an invisible proof-of-work check in the visitor's browser, rate limits, and double opt-in, so nobody joins a list without confirming."
+msgstr "Przekazuj osoby, które wypełniają formularz kontaktowy, zamówienia lub rejestracji, do formularza theblue.email. Każdy zapis ma taką samą ochronę jak formularz theblue.email: ukryte pole honeypot, niewidoczne sprawdzenie proof of work w przeglądarce odwiedzającego, limity częstotliwości i podwójną zgodę, więc nikt nie trafia na listę bez potwierdzenia."
+
+#: includes/class-settings-page.php:393
+msgid "Open a form, then Settings, theblue.email, and add a feed. Use a consent checkbox as the feed condition."
+msgstr "Otwórz formularz, potem Ustawienia, theblue.email, i dodaj feed. Jako warunek feedu użyj pola zgody."
+
+#: includes/class-settings-page.php:398
+msgid "Edit a contact form and open the theblue.email tab. Add an [acceptance newsletter optional] field and name it as the consent field."
+msgstr "Edytuj formularz kontaktowy i otwórz kartę theblue.email. Dodaj pole [acceptance newsletter optional] i wskaż je jako pole zgody."
+
+#: includes/class-settings-page.php:405
+msgid "active"
+msgstr "aktywna"
+
+#: includes/class-settings-page.php:406
+msgid "not installed"
+msgstr "niezainstalowana"
+
+#: includes/class-settings-page.php:419
+msgid "Recent signups from other form plugins"
+msgstr "Ostatnie zapisy z innych wtyczek formularzy"
+
+#: includes/class-settings-page.php:422
+msgid "Nothing yet."
+msgstr "Na razie nic."
+
+#: includes/class-settings-page.php:427
+msgid "When"
+msgstr "Kiedy"
+
+#: includes/class-settings-page.php:427
+msgid "Address"
+msgstr "Adres"
+
+#: includes/class-settings-page.php:427
+msgid "Result"
+msgstr "Wynik"
+
+#: includes/class-settings-page.php:442
+msgid "Clear"
+msgstr "Wyczyść"
+
+#: includes/class-settings-page.php:454
+msgid "Sent, confirmation email on its way"
+msgstr "Wysłano, e-mail z potwierdzeniem jest w drodze"
+
+#: includes/class-settings-page.php:458 includes/class-settings-page.php:459
+msgid "Refused: the hidden field was filled in (a bot)"
+msgstr "Odrzucono: ukryte pole zostało wypełnione (bot)"
+
+#: includes/class-settings-page.php:460 includes/class-settings-page.php:461
+msgid "Refused: not a valid address"
+msgstr "Odrzucono: nieprawidłowy adres"
+
+#: includes/class-settings-page.php:462
+msgid "Refused: too many signups from one visitor"
+msgstr "Odrzucono: zbyt wiele zapisów od jednego odwiedzającego"
+
+#: includes/class-settings-page.php:463
+msgid "Refused: too many attempts"
+msgstr "Odrzucono: zbyt wiele prób"
+
+#: includes/class-settings-page.php:464
+msgid "Refused: the browser check was missing or out of date (JavaScript off, or the page was open for over an hour)"
+msgstr "Odrzucono: brak sprawdzenia przeglądarki lub jest nieaktualne (wyłączony JavaScript albo strona była otwarta dłużej niż godzinę)"
+
+#: includes/class-settings-page.php:465
+msgid "Waiting: the form is under attack, so the visitor was asked to finish a check on theblue.email"
+msgstr "Oczekuje: formularz jest atakowany, więc odwiedzającego poproszono o dokończenie weryfikacji w theblue.email"
+
+#: includes/class-settings-page.php:466
+msgid "Refused: the theblue.email form is a draft or was deleted"
+msgstr "Odrzucono: formularz theblue.email jest wersją roboczą lub został usunięty"
+
+#: includes/class-settings-page.php:467
+msgid "Refused: the key was revoked"
+msgstr "Odrzucono: klucz został unieważniony"
+
+#: includes/class-settings-page.php:468
+msgid "Refused: the theblue.email subscription has ended"
+msgstr "Odrzucono: subskrypcja theblue.email wygasła"
+
+#: includes/class-settings-page.php:469
+msgid "Failed: theblue.email could not be reached"
+msgstr "Błąd: nie udało się połączyć z theblue.email"
+
+#: includes/class-settings-page.php:470
+msgid "Failed: this site is not connected"
+msgstr "Błąd: ta strona nie jest połączona"
+
+#: includes/class-settings-page.php:471
+msgid "Failed: no theblue.email form is chosen"
+msgstr "Błąd: nie wybrano formularza theblue.email"
+
+#. translators: %s: reason code.
+#: includes/class-settings-page.php:475
+#, php-format
+msgid "Refused (%s)"
+msgstr "Odrzucono (%s)"
+
+#: includes/class-embed.php:45
+msgid "theblue.email: choose a form."
+msgstr "theblue.email: wybierz formularz."
+
+#: includes/class-embed.php:54
+msgid "theblue.email: this form is a draft and is not shown."
+msgstr "theblue.email: ten formularz jest wersją roboczą i nie jest wyświetlany."
+
+#: includes/class-plugin.php:121
+msgid "theblue.email Forms needs the sodium or OpenSSL PHP extension."
+msgstr "Wtyczka theblue.email Forms wymaga rozszerzenia PHP sodium lub OpenSSL."
+
+#: includes/class-rest.php:153
+msgid "This site has no hostname to allow."
+msgstr "Ta strona nie ma nazwy hosta, którą można dopuścić."
+
+#. translators: %s: this site's hostname.
+#: includes/class-rest.php:175
+#, php-format
+msgid "%s can now show this form."
+msgstr "%s może teraz wyświetlać ten formularz."
+
+#: includes/integrations/class-contact-form-7.php:164
+msgid "theblue.email newsletter signups"
+msgstr "Zapisy do newslettera theblue.email"
+
+#. translators: %s: link to the plugin's settings page.
+#: includes/integrations/class-contact-form-7.php:170 includes/integrations/class-gravity-forms-addon.php:149
+#, php-format
+msgid "Connect this site to theblue.email first: %s"
+msgstr "Najpierw połącz tę stronę z theblue.email: %s"
+
+#: includes/integrations/class-contact-form-7.php:177
+msgid "Send the people who submit this form to a theblue.email form. They get its confirmation email and join its list only once they confirm. The message itself is sent as usual."
+msgstr "Przekazuj osoby, które wysyłają ten formularz, do formularza theblue.email. Dostaną jego e-mail z potwierdzeniem i dołączą do jego listy dopiero po potwierdzeniu. Sama wiadomość jest wysyłana jak zwykle."
+
+#: includes/integrations/class-contact-form-7.php:180
+msgid "Send signups"
+msgstr "Wysyłaj zapisy"
+
+#: includes/integrations/class-contact-form-7.php:180
+msgid "Send to theblue.email"
+msgstr "Wysyłaj do theblue.email"
+
+#: includes/integrations/class-contact-form-7.php:182 includes/integrations/class-gravity-forms-addon.php:173 includes/integrations/class-gravity-forms-addon.php:251 blocks/form/editor.js:74 blocks/form/editor.js:79 blocks/form/editor.js:119 blocks/form/editor.js:134
+msgid "theblue.email form"
+msgstr "Formularz theblue.email"
+
+#: includes/integrations/class-contact-form-7.php:182 includes/integrations/class-gravity-forms-addon.php:223 blocks/form/editor.js:89
+msgid "Choose a form"
+msgstr "Wybierz formularz"
+
+#. translators: %s: form name.
+#: includes/integrations/class-contact-form-7.php:187 includes/integrations/class-gravity-forms-addon.php:232 blocks/form/editor.js:91
+#, php-format
+msgid "%s (draft)"
+msgstr "%s (wersja robocza)"
+
+#: includes/integrations/class-contact-form-7.php:194
+msgid "Email field"
+msgstr "Pole e-mail"
+
+#: includes/integrations/class-contact-form-7.php:194
+msgid "The name of the field with the address, e.g. your-email."
+msgstr "Nazwa pola z adresem, np. your-email."
+
+#: includes/integrations/class-contact-form-7.php:195
+msgid "First name field"
+msgstr "Pole imienia"
+
+#: includes/integrations/class-contact-form-7.php:195
+msgid "Optional, e.g. your-name."
+msgstr "Opcjonalne, np. your-name."
+
+#: includes/integrations/class-contact-form-7.php:196
+msgid "Consent field"
+msgstr "Pole zgody"
+
+#: includes/integrations/class-contact-form-7.php:196
+msgid "The name of an acceptance or checkbox field such as [acceptance newsletter optional]. When set, only people who tick it are sent. Recommended on a contact form."
+msgstr "Nazwa pola akceptacji lub pola wyboru, np. [acceptance newsletter optional]. Gdy jest ustawione, wysyłane są tylko osoby, które je zaznaczą. Zalecane w formularzu kontaktowym."
+
+#: includes/integrations/class-contact-form-7.php:210
+msgid "This form has no field with that email field name."
+msgstr "Ten formularz nie ma pola o takiej nazwie pola e-mail."
+
+#: includes/integrations/class-gravity-forms-addon.php:162
+msgid "theblue.email signups"
+msgstr "Zapisy theblue.email"
+
+#: includes/integrations/class-gravity-forms-addon.php:166 includes/integrations/class-gravity-forms-addon.php:250
+msgid "Name"
+msgstr "Nazwa"
+
+#: includes/integrations/class-gravity-forms-addon.php:177
+msgid "Signups join this form's list and get its confirmation email, as if they had used the form itself. The form must be live."
+msgstr "Zapisane osoby trafiają na listę tego formularza i dostają jego e-mail z potwierdzeniem, tak jakby użyły samego formularza. Formularz musi być aktywny."
+
+#: includes/integrations/class-gravity-forms-addon.php:181
+msgid "Fields"
+msgstr "Pola"
+
+#: includes/integrations/class-gravity-forms-addon.php:186
+msgid "Email address"
+msgstr "Adres e-mail"
+
+#: includes/integrations/class-gravity-forms-addon.php:192
+msgid "First name"
+msgstr "Imię"
+
+#: includes/integrations/class-gravity-forms-addon.php:199
+msgid "Consent"
+msgstr "Zgoda"
+
+#: includes/integrations/class-gravity-forms-addon.php:201
+msgid "Send to theblue.email only when a condition is met"
+msgstr "Wysyłaj do theblue.email tylko po spełnieniu warunku"
+
+#: includes/integrations/class-gravity-forms-addon.php:202
+msgid "Send to theblue.email if"
+msgstr "Wysyłaj do theblue.email, jeśli"
+
+#: includes/integrations/class-gravity-forms-addon.php:203
+msgid "On a contact or order form, add a checkbox such as \"Send me the newsletter\" and use it here. Everyone gets a confirmation email and joins only once they confirm."
+msgstr "W formularzu kontaktowym lub zamówienia dodaj pole wyboru, np. „Wysyłajcie mi newsletter”, i użyj go tutaj. Każdy dostaje e-mail z potwierdzeniem i dołącza dopiero po potwierdzeniu."
+
+#: includes/integrations/class-gravity-forms-addon.php:305
+msgid "Sent to theblue.email. The confirmation email is on its way."
+msgstr "Wysłano do theblue.email. E-mail z potwierdzeniem jest w drodze."
+
+#. translators: 1: reason code, 2: message from theblue.email.
+#: includes/integrations/class-gravity-forms-addon.php:316
+#, php-format
+msgid "Not sent to theblue.email (%1$s). %2$s"
+msgstr "Nie wysłano do theblue.email (%1$s). %2$s"
+
+#: includes/integrations/class-gravity-forms-addon.php:347
+msgid "Continue"
+msgstr "Dalej"
+
+#: blocks/form/editor.js:36
+msgid "Could not load your forms."
+msgstr "Nie udało się wczytać Twoich formularzy."
+
+#: blocks/form/editor.js:57
+msgid "Your theblue.email form appears here on the published page."
+msgstr "Twój formularz theblue.email pojawi się tutaj na opublikowanej stronie."
+
+#: blocks/form/editor.js:58
+msgid "This form is a draft in theblue.email and is not shown on the page."
+msgstr "Ten formularz jest wersją roboczą w theblue.email i nie jest wyświetlany na stronie."
+
+#: blocks/form/editor.js:79
+msgid "Connect this site to your theblue.email account to choose a form."
+msgstr "Połącz tę stronę z kontem theblue.email, aby wybrać formularz."
+
+#: blocks/form/editor.js:98
+msgid "Could not allow this site."
+msgstr "Nie udało się dopuścić tej strony."
+
+#. translators: %s: this site's hostname.
+#: blocks/form/editor.js:113
+#, php-format
+msgid "This form is not allowed on %s yet, so visitors would see a short message instead of it."
+msgstr "Ten formularz nie jest jeszcze dopuszczony na %s, więc odwiedzający zobaczyliby zamiast niego krótki komunikat."
+
+#. translators: %s: name of the theblue.email list.
+#: blocks/form/editor.js:122
+#, php-format
+msgid "List: %s"
+msgstr "Lista: %s"
+
+#: blocks/form/editor.js:135
+msgid "Choose which form to show."
+msgstr "Wybierz formularz do wyświetlenia."
+
+#: blocks/form/editor.js:135
+msgid "There are no forms in your theblue.email account yet. Create one under Forms in theblue.email."
+msgstr "Na Twoim koncie theblue.email nie ma jeszcze formularzy. Utwórz formularz w sekcji Formularze w theblue.email."

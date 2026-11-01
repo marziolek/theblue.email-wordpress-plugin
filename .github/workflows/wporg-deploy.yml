@@ -1,0 +1,34 @@
+name: Deploy to WordPress.org
+
+# Runs when a GitHub release is published (not drafted). Needs the repository
+# secrets SVN_USERNAME and SVN_PASSWORD of the WordPress.org account that owns
+# the plugin, which exist only once the directory has approved it. Files in
+# .distignore are left out; .wordpress-org/ becomes the SVN assets folder
+# (banners, icons, screenshots).
+
+on:
+  release:
+    types: [published]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.3'
+          coverage: none
+      - name: Versions agree with the release
+        if: github.event_name == 'release'
+        run: php bin/check-versions.php "${{ github.event.release.tag_name }}"
+      - uses: 10up/action-wordpress-plugin-deploy@stable
+        env:
+          SVN_USERNAME: ${{ secrets.SVN_USERNAME }}
+          SVN_PASSWORD: ${{ secrets.SVN_PASSWORD }}
+          SLUG: theblue-email-forms
+          ASSETS_DIR: .wordpress-org

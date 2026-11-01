@@ -1,0 +1,35 @@
+.tbef-block-preview {
+	border: 1px dashed #c3c4c7;
+	border-radius: 4px;
+	padding: 16px;
+	background: #f6f7f7;
+}
+
+.tbef-block-preview__title {
+	display: flex;
+	gap: 8px;
+	align-items: center;
+	margin: 0 0 8px;
+	font-weight: 600;
+}
+
+.tbef-block-preview__bar {
+	display: block;
+	height: 36px;
+	margin: 8px 0;
+	border-radius: 4px;
+	background: #fff;
+	border: 1px solid #dcdcde;
+}
+
+.tbef-block-preview__bar--button {
+	width: 40%;
+	background: #2c4bd8;
+	border-color: #2c4bd8;
+}
+
+.tbef-block-preview__note {
+	margin: 8px 0 0;
+	color: #50575e;
+	font-size: 12px;
+}

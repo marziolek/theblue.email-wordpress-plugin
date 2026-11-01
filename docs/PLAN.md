@@ -1,8 +1,9 @@
 # theblue.email Forms - the public WordPress plugin
 
 Plan written 2026-11-01 against the platform as it exists in `marziolek/theblue.email`
-(plugin version 1.0.41). This repository is empty apart from this plan; the sections below
-say what to build, in what order, and what must change on the platform first.
+(plugin version 1.0.41). **Built the same day**, on the recommendations below since the
+owner decisions were still open; section 10 lists what was built and where it departs
+from this plan. Publishing is [PUBLISHING.md](PUBLISHING.md).
 
 ## 1. What it is
 
@@ -292,3 +293,44 @@ local platform as soon as Phase 1 is on a branch.
   platform grows an embeddable landing-page route.
 - A legacy widget only if tenants on classic themes ask; the shortcode in a Text widget
   covers it meanwhile.
+
+## 10. As built (2026-11-01)
+
+Phases 0 to 4 are done in code; phase 5 (submission, docs live) is the owner's, see
+PUBLISHING.md. Every decision D1 to D7 was taken as recommended.
+
+**Platform (theblue.email 1.0.42).** `tbe3256_api_keys.scope` (`full` | `forms`);
+`ApiKey::authenticate($raw, $required)` asks for `full` by default, so the tenant API
+refuses a Website key with no change to `ApiRest`. The Integrations panel offers a
+Website key on every plan. Routes live in a new `SiteApiRest` under `/site/` rather than
+beside the public form routes, so the two authentication models never share a path:
+
+```
+GET  /api/tbe/v1/site/account
+GET  /api/tbe/v1/site/forms
+POST /api/tbe/v1/site/forms/{key}/allowed-domains
+GET  /api/tbe/v1/site/forms/{key}/challenge
+POST /api/tbe/v1/site/forms/{key}/subscribe
+```
+
+**Gravity Forms and Contact Form 7 moved from "later" (v1.2) into 1.0**, at the owner's
+request, and changed shape. The plan had them post to `POST /subscribers` with a full key,
+which skips every form protection and would have needed Pro. Instead a relayed signup goes
+through a theblue.email form with `FormRest::relay()`, which runs the same steps as an
+embedded form: honeypot, per-visitor-IP limit (keyed on account and visitor, not on the
+relaying server), FormGuard, proof of work, the Turnstile hand-off for a form under attack,
+then double opt-in. So it works on every plan and counts against the form's list and
+limits. An account may relay 600 signups an hour.
+
+Proof of work for a form the site renders: `tbef-protect.js` asks this site for a
+challenge (`/wp-json/tbef/v1/challenge?target=gf-12`), the site fetches it from the
+platform with its key, and the browser solves it while the visitor types. Pages carry an
+opaque target name, never a form key. The solver is copied from `tbe-embed.js`; a Node test
+checks it and a cross-check against the platform's PHP verifier passed during the build.
+
+**Block editor preview** shows the form's shape, not the live form: scripts inside
+`ServerSideRender` output do not run, so the plan's live preview was not possible.
+
+**Not done:** the connect-button flow (D7, v1.1), screenshots, the WordPress.org and
+Gravity Forms submissions, tenant docs on theblue.email for the plugin beyond the API and
+signup-forms pages.

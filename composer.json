@@ -1,0 +1,46 @@
+{
+    "name": "theblue/theblue-email-forms",
+    "description": "theblue.email Forms: place theblue.email signup forms on WordPress and collect signups from Gravity Forms and Contact Form 7.",
+    "type": "wordpress-plugin",
+    "license": "GPL-2.0-or-later",
+    "require": {
+        "php": ">=8.1"
+    },
+    "require-dev": {
+        "brain/monkey": "^2.6",
+        "dealerdirect/phpcodesniffer-composer-installer": "^1.0",
+        "mockery/mockery": "^1.6",
+        "phpcompatibility/phpcompatibility-wp": "^2.1",
+        "phpstan/phpstan": "^2.1",
+        "phpunit/phpunit": "^10.5",
+        "szepeviktor/phpstan-wordpress": "^2.0",
+        "wp-coding-standards/wpcs": "^3.1",
+        "yoast/phpunit-polyfills": "^2.0"
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "TheBlueEmail\\Forms\\Tests\\": "tests/"
+        }
+    },
+    "config": {
+        "sort-packages": true,
+        "allow-plugins": {
+            "dealerdirect/phpcodesniffer-composer-installer": true
+        }
+    },
+    "scripts": {
+        "test": "phpunit",
+        "test:js": "node --test tests/js/pow.test.js",
+        "lint": "phpcs",
+        "lint:fix": "phpcbf",
+        "analyse": "phpstan analyse --memory-limit=-1",
+        "versions": "php bin/check-versions.php",
+        "qa": [
+            "@versions",
+            "@lint",
+            "@analyse",
+            "@test",
+            "@test:js"
+        ]
+    }
+}

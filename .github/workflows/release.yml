@@ -1,0 +1,31 @@
+name: Release
+
+# Push a tag v1.2.3: checks that every version field says 1.2.3, builds the
+# zip and attaches it to a GitHub release, for testers before (and besides)
+# WordPress.org. Publishing the release then triggers wporg-deploy.yml.
+
+on:
+  push:
+    tags: ['v*']
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.3'
+          coverage: none
+      - name: Versions agree with the tag
+        run: php bin/check-versions.php "${GITHUB_REF_NAME}"
+      - name: Build
+        run: bin/build-zip.sh
+      - uses: softprops/action-gh-release@v2
+        with:
+          files: dist/theblue-email-forms.zip
+          draft: true
+          generate_release_notes: true

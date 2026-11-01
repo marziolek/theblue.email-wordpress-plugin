@@ -1,0 +1,13 @@
+includes:
+    - vendor/szepeviktor/phpstan-wordpress/extension.neon
+
+parameters:
+    level: 6
+    paths:
+        - theblue-email-forms.php
+        - includes
+        - blocks/form/render.php
+    scanFiles:
+        - tests/stubs/integrations.php
+    bootstrapFiles:
+        - tests/stubs/constants.php

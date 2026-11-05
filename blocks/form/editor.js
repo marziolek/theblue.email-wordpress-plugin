@@ -24,6 +24,17 @@
 
 	var D = 'theblue-email-forms';
 
+	// A signup form drawn the way theblue.email draws one: an outlined field
+	// and a pill button. The same glyph is the plugin's directory icon.
+	var ICON = {
+		foreground: '#0f1f96',
+		src: el( 'svg', { xmlns: 'http://www.w3.org/2000/svg', viewBox: '0 0 24 24', width: 24, height: 24, 'aria-hidden': true, focusable: false },
+			el( 'rect', { x: 3.75, y: 5.75, width: 16.5, height: 5.5, rx: 1.5, fill: 'none', stroke: 'currentColor', strokeWidth: 1.5 } ),
+			el( 'path', { d: 'M6.5 7.25v2.5', stroke: 'currentColor', strokeWidth: 1.5, strokeLinecap: 'round' } ),
+			el( 'rect', { x: 3.5, y: 13.5, width: 11.5, height: 5, rx: 2.5, fill: 'currentColor' } )
+		)
+	};
+
 	function useForms() {
 		var state = useState( { loading: true, data: null } );
 		var value = state[ 0 ];
@@ -48,14 +59,19 @@
 			bars.push( el( 'span', { key: i, className: 'tbef-block-preview__bar' } ) );
 		}
 
-		return el( 'div', { className: 'tbef-block-preview' },
+		var live = 'active' === form.status;
+
+		return el( 'div', { className: 'tbef-block-preview' + ( live ? '' : ' tbef-block-preview--draft' ) },
 			el( 'p', { className: 'tbef-block-preview__title' }, form.name ),
 			bars,
 			el( 'span', { className: 'tbef-block-preview__bar tbef-block-preview__bar--button' } ),
-			el( 'p', { className: 'tbef-block-preview__note' },
-				'active' === form.status
-					? __( 'Your theblue.email form appears here on the published page.', D )
-					: __( 'This form is a draft in theblue.email and is not shown on the page.', D )
+			el( 'div', { className: 'tbef-block-preview__foot' },
+				el( 'span', { className: 'tbef-block-preview__brand', role: 'img', 'aria-label': 'theblue.email' } ),
+				el( 'p', { className: 'tbef-block-preview__note' },
+					live
+						? __( 'Your theblue.email form appears here on the published page.', D )
+						: __( 'This form is a draft in theblue.email and is not shown on the page.', D )
+				)
 			)
 		);
 	}
@@ -71,12 +87,12 @@
 		var data = forms.data;
 
 		if ( forms.loading && ! data ) {
-			return el( 'div', blockProps, el( Placeholder, { icon: 'email-alt', label: __( 'theblue.email form', D ) }, el( Spinner ) ) );
+			return el( 'div', blockProps, el( Placeholder, { icon: ICON.src, label: __( 'theblue.email form', D ) }, el( Spinner ) ) );
 		}
 
 		if ( ! data || ! data.connected ) {
 			return el( 'div', blockProps,
-				el( Placeholder, { icon: 'email-alt', label: __( 'theblue.email form', D ), instructions: __( 'Connect this site to your theblue.email account to choose a form.', D ) },
+				el( Placeholder, { icon: ICON.src, label: __( 'theblue.email form', D ), instructions: __( 'Connect this site to your theblue.email account to choose a form.', D ) },
 					data && data.can_manage ? el( Button, { variant: 'primary', href: data.settings_url }, __( 'Connect', D ) ) : null
 				)
 			);
@@ -130,7 +146,7 @@
 		if ( ! current ) {
 			return el( 'div', blockProps, inspector,
 				el( Placeholder, {
-					icon: 'email-alt',
+					icon: ICON.src,
 					label: __( 'theblue.email form', D ),
 					instructions: list.length ? __( 'Choose which form to show.', D ) : __( 'There are no forms in your theblue.email account yet. Create one under Forms in theblue.email.', D )
 				}, list.length ? select : null )
@@ -141,6 +157,7 @@
 	}
 
 	wp.blocks.registerBlockType( 'theblue-email/form', {
+		icon: ICON,
 		edit: Edit,
 		save: function () { return null; }
 	} );

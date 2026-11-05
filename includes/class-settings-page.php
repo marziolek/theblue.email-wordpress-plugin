@@ -224,20 +224,34 @@ class Settings_Page {
 			$this->forms->refresh_if_stale();
 		}
 
-		echo '<div class="wrap tbef-settings"><h1>' . esc_html__( 'theblue.email', 'theblue-email-forms' ) . '</h1>';
+		// Notices from WordPress and other plugins land at .wp-header-end, above the stage.
+		echo '<div class="wrap tbef-settings"><hr class="wp-header-end">';
 
 		$this->flash();
 
 		if ( $this->connection->is_connected() ) {
 			$this->connected_card();
+			echo '<div class="tbef-paper">';
 			$this->forms_card();
 			$this->integrations_card();
 			$this->activity_card();
+			echo '</div>';
 		} else {
 			$this->connect_card();
 		}
 
 		echo '</div>';
+	}
+
+	/**
+	 * The page title: the theblue.email wordmark, set on the stage.
+	 */
+	private function brand(): void {
+		printf(
+			'<h1 class="tbef-stage__brand"><img src="%1$s" alt="%2$s" width="127" height="22"></h1>',
+			esc_url( TBEF_URL . 'assets/images/wordmark-on-stage.svg' ),
+			esc_attr__( 'theblue.email', 'theblue-email-forms' )
+		);
 	}
 
 	/**
@@ -272,13 +286,16 @@ class Settings_Page {
 	 * Not connected yet.
 	 */
 	private function connect_card(): void {
-		echo '<div class="tbef-card"><h2>' . esc_html__( 'Connect your theblue.email account', 'theblue-email-forms' ) . '</h2>';
+		echo '<section class="tbef-stage tbef-stage--connect"><div class="tbef-stage__top">';
+		$this->brand();
+		echo '</div>';
 
 		if ( $this->connection->is_unreadable() ) {
 			echo '<div class="notice notice-warning inline"><p>' . esc_html__( 'The stored key can no longer be read, usually because the site\'s security keys changed. Paste the key again.', 'theblue-email-forms' ) . '</p></div>';
 		}
 
-		echo '<ol class="tbef-steps">';
+		echo '<div class="tbef-connect"><h2 class="tbef-connect__title">' . esc_html__( 'Connect your theblue.email account', 'theblue-email-forms' ) . '</h2>';
+		echo '<div class="tbef-connect__body"><ol class="tbef-steps">';
 		echo '<li>' . wp_kses_post(
 			sprintf(
 				/* translators: %s: link to theblue.email. */
@@ -286,44 +303,49 @@ class Settings_Page {
 				'<a href="' . esc_url( TBEF_PLATFORM_URL . '/app/integrations' ) . '" target="_blank" rel="noopener">theblue.email</a>'
 			)
 		) . '</li>';
-		echo '<li>' . esc_html__( 'Paste it here and connect.', 'theblue-email-forms' ) . '</li>';
-		echo '</ol>';
+		echo '<li>' . esc_html__( 'Paste it here and connect.', 'theblue-email-forms' );
 
 		$this->form_open( 'connect' );
 		echo '<label for="tbef_key" class="screen-reader-text">' . esc_html__( 'Website key', 'theblue-email-forms' ) . '</label>';
-		echo '<input type="password" id="tbef_key" name="tbef_key" class="regular-text code" autocomplete="off" spellcheck="false" placeholder="tbe_..." required pattern="tbe_[a-f0-9]{32}"> ';
+		echo '<span class="tbef-keyfield"><input type="password" id="tbef_key" name="tbef_key" class="code" autocomplete="off" spellcheck="false" placeholder="tbe_..." required pattern="tbe_[a-f0-9]{32}"> ';
 		submit_button( __( 'Connect', 'theblue-email-forms' ), 'primary', 'submit', false );
-		echo '</form>';
+		echo '</span></form></li></ol>';
 
-		echo '<p class="description">' . esc_html__( 'The key is stored encrypted and is never shown again in full. A Website key can only read your forms, allow this site on them and pass on signups; it cannot read your subscribers or send email.', 'theblue-email-forms' ) . '</p>';
-		echo '</div>';
+		echo '<p class="tbef-stage__note">' . esc_html__( 'The key is stored encrypted and is never shown again in full. A Website key can only read your forms, allow this site on them and pass on signups; it cannot read your subscribers or send email.', 'theblue-email-forms' ) . '</p>';
+		echo '</div></div></section>';
 	}
 
 	/**
-	 * The account this site is connected to.
+	 * The account this site is connected to, set on the stage.
 	 */
 	private function connected_card(): void {
 		$account = $this->connection->account();
+		$email   = (string) ( $account['email'] ?? '' );
 
-		echo '<div class="tbef-card"><h2>' . esc_html__( 'Connection', 'theblue-email-forms' ) . '</h2>';
-
-		if ( $this->connection->is_revoked() ) {
-			echo '<div class="notice notice-error inline"><p>' . esc_html__( 'theblue.email no longer accepts this key. It may have been revoked. Disconnect and connect again with a new Website key.', 'theblue-email-forms' ) . '</p></div>';
-		}
-
-		echo '<table class="form-table" role="presentation"><tbody>';
-		echo '<tr><th scope="row">' . esc_html__( 'Account', 'theblue-email-forms' ) . '</th><td>' . esc_html( trim( ( $account['name'] ?? '' ) . ' ' . ( '' !== ( $account['email'] ?? '' ) ? '(' . $account['email'] . ')' : '' ) ) ) . '</td></tr>';
-		echo '<tr><th scope="row">' . esc_html__( 'Plan', 'theblue-email-forms' ) . '</th><td>' . esc_html( ucfirst( $account['plan'] ?? '' ) ) . '</td></tr>';
-		echo '<tr><th scope="row">' . esc_html__( 'Key', 'theblue-email-forms' ) . '</th><td><code>' . esc_html( $this->connection->key_prefix() ) . '…</code></td></tr>';
-		echo '<tr><th scope="row">' . esc_html__( 'This site', 'theblue-email-forms' ) . '</th><td><code>' . esc_html( Forms::site_host() ) . '</code></td></tr>';
-		echo '</tbody></table>';
-
+		echo '<section class="tbef-stage"><div class="tbef-stage__top">';
+		$this->brand();
+		echo '<div class="tbef-stage__actions">';
 		$this->form_open( 'refresh' );
 		submit_button( __( 'Refresh forms', 'theblue-email-forms' ), 'secondary', 'submit', false );
 		echo '</form> ';
 		$this->form_open( 'disconnect' );
 		submit_button( __( 'Disconnect', 'theblue-email-forms' ), 'delete', 'submit', false );
-		echo '</form></div>';
+		echo '</form></div></div>';
+
+		if ( $this->connection->is_revoked() ) {
+			echo '<div class="notice notice-error inline"><p>' . esc_html__( 'theblue.email no longer accepts this key. It may have been revoked. Disconnect and connect again with a new Website key.', 'theblue-email-forms' ) . '</p></div>';
+		}
+
+		echo '<dl class="tbef-facts">';
+		echo '<div class="tbef-facts__item"><dt>' . esc_html__( 'Account', 'theblue-email-forms' ) . '</dt><dd>' . esc_html( (string) ( $account['name'] ?? '' ) );
+		if ( '' !== $email ) {
+			echo '<span class="tbef-facts__sub">' . esc_html( $email ) . '</span>';
+		}
+		echo '</dd></div>';
+		echo '<div class="tbef-facts__item"><dt>' . esc_html__( 'Plan', 'theblue-email-forms' ) . '</dt><dd>' . esc_html( ucfirst( (string) ( $account['plan'] ?? '' ) ) ) . '</dd></div>';
+		echo '<div class="tbef-facts__item"><dt>' . esc_html__( 'Key', 'theblue-email-forms' ) . '</dt><dd><code>' . esc_html( $this->connection->key_prefix() ) . '…</code></dd></div>';
+		echo '<div class="tbef-facts__item"><dt>' . esc_html__( 'This site', 'theblue-email-forms' ) . '</dt><dd><code>' . esc_html( Forms::site_host() ) . '</code></dd></div>';
+		echo '</dl></section>';
 	}
 
 	/**
@@ -332,15 +354,15 @@ class Settings_Page {
 	private function forms_card(): void {
 		$forms = $this->forms->all();
 
-		echo '<div class="tbef-card"><h2>' . esc_html__( 'Your forms', 'theblue-email-forms' ) . '</h2>';
-		echo '<p>' . esc_html__( 'Add the "theblue.email form" block to a page, or paste a shortcode. A form shows only on sites on its allowed domains.', 'theblue-email-forms' ) . '</p>';
+		echo '<section class="tbef-section"><h2 class="tbef-section__title">' . esc_html__( 'Your forms', 'theblue-email-forms' ) . '</h2>';
+		echo '<p class="tbef-section__lead">' . esc_html__( 'Add the "theblue.email form" block to a page, or paste a shortcode. A form shows only on sites on its allowed domains.', 'theblue-email-forms' ) . '</p>';
 
 		if ( array() === $forms ) {
-			echo '<p><em>' . esc_html__( 'No forms yet. Create one under Forms in theblue.email, then refresh.', 'theblue-email-forms' ) . '</em></p></div>';
+			echo '<p class="tbef-empty">' . esc_html__( 'No forms yet. Create one under Forms in theblue.email, then refresh.', 'theblue-email-forms' ) . '</p></section>';
 			return;
 		}
 
-		echo '<table class="widefat striped tbef-forms"><thead><tr>';
+		echo '<div class="tbef-scroll"><table class="tbef-table tbef-forms"><thead><tr>';
 		echo '<th>' . esc_html__( 'Form', 'theblue-email-forms' ) . '</th>';
 		echo '<th>' . esc_html__( 'Status', 'theblue-email-forms' ) . '</th>';
 		echo '<th>' . esc_html__( 'List', 'theblue-email-forms' ) . '</th>';
@@ -353,11 +375,11 @@ class Settings_Page {
 			$shortcode = Shortcode::for_key( $key );
 
 			echo '<tr><td><strong>' . esc_html( (string) $form['name'] ) . '</strong></td>';
-			echo '<td>' . ( 'active' === $form['status'] ? esc_html__( 'Live', 'theblue-email-forms' ) : esc_html__( 'Draft', 'theblue-email-forms' ) ) . '</td>';
+			echo '<td>' . ( 'active' === $form['status'] ? '<span class="tbef-pill tbef-pill--live">' . esc_html__( 'Live', 'theblue-email-forms' ) . '</span>' : '<span class="tbef-pill">' . esc_html__( 'Draft', 'theblue-email-forms' ) . '</span>' ) . '</td>';
 			echo '<td>' . esc_html( '' !== $form['list'] ? (string) $form['list'] : '-' ) . '</td><td>';
 
 			if ( Forms::allows_this_site( $form ) ) {
-				echo '<span class="tbef-ok">' . esc_html__( 'Allowed', 'theblue-email-forms' ) . '</span>';
+				echo '<span class="tbef-pill tbef-pill--ok">' . esc_html__( 'Allowed', 'theblue-email-forms' ) . '</span>';
 			} else {
 				$this->form_open( 'allow' );
 				echo '<input type="hidden" name="tbef_form" value="' . esc_attr( $key ) . '">';
@@ -368,7 +390,7 @@ class Settings_Page {
 			echo '</td><td><code class="tbef-code">' . esc_html( $shortcode ) . '</code> <button type="button" class="button button-small tbef-copy" data-copy="' . esc_attr( $shortcode ) . '">' . esc_html__( 'Copy', 'theblue-email-forms' ) . '</button></td></tr>';
 		}
 
-		echo '</tbody></table>';
+		echo '</tbody></table></div>';
 
 		$fetched = $this->forms->fetched_at();
 		if ( $fetched > 0 ) {
@@ -376,15 +398,15 @@ class Settings_Page {
 			echo '<p class="description">' . esc_html( sprintf( __( 'Loaded %s ago.', 'theblue-email-forms' ), human_time_diff( $fetched ) ) ) . '</p>';
 		}
 
-		echo '</div>';
+		echo '</section>';
 	}
 
 	/**
 	 * Gravity Forms and Contact Form 7.
 	 */
 	private function integrations_card(): void {
-		echo '<div class="tbef-card"><h2>' . esc_html__( 'Signups from other form plugins', 'theblue-email-forms' ) . '</h2>';
-		echo '<p>' . esc_html__( 'Send the people who fill in a contact, order or registration form to a theblue.email form. Each signup gets the same protection as a theblue.email form: a hidden honeypot field, an invisible proof-of-work check in the visitor\'s browser, rate limits, and double opt-in, so nobody joins a list without confirming.', 'theblue-email-forms' ) . '</p><ul class="tbef-integrations">';
+		echo '<section class="tbef-section"><h2 class="tbef-section__title">' . esc_html__( 'Signups from other form plugins', 'theblue-email-forms' ) . '</h2>';
+		echo '<p class="tbef-section__lead">' . esc_html__( 'Send the people who fill in a contact, order or registration form to a theblue.email form. Each signup gets the same protection as a theblue.email form: a hidden honeypot field, an invisible proof-of-work check in the visitor\'s browser, rate limits, and double opt-in, so nobody joins a list without confirming.', 'theblue-email-forms' ) . '</p><ul class="tbef-integrations">';
 
 		$rows = array(
 			array(
@@ -400,14 +422,14 @@ class Settings_Page {
 		);
 
 		foreach ( $rows as $row ) {
-			echo '<li><strong>' . esc_html( $row[0] ) . '</strong>: ';
+			echo '<li class="tbef-integration"><strong class="tbef-integration__name">' . esc_html( $row[0] ) . '</strong> ';
 			echo $row[1]
-				? '<span class="tbef-ok">' . esc_html__( 'active', 'theblue-email-forms' ) . '</span> ' . esc_html( $row[2] )
-				: esc_html__( 'not installed', 'theblue-email-forms' );
+				? '<span class="tbef-pill tbef-pill--ok">' . esc_html__( 'active', 'theblue-email-forms' ) . '</span><span class="tbef-integration__how">' . esc_html( $row[2] ) . '</span>'
+				: '<span class="tbef-pill">' . esc_html__( 'not installed', 'theblue-email-forms' ) . '</span>';
 			echo '</li>';
 		}
 
-		echo '</ul></div>';
+		echo '</ul></section>';
 	}
 
 	/**
@@ -416,14 +438,14 @@ class Settings_Page {
 	private function activity_card(): void {
 		$entries = array_reverse( $this->log->all() );
 
-		echo '<div class="tbef-card"><h2>' . esc_html__( 'Recent signups from other form plugins', 'theblue-email-forms' ) . '</h2>';
+		echo '<section class="tbef-section"><h2 class="tbef-section__title">' . esc_html__( 'Recent signups from other form plugins', 'theblue-email-forms' ) . '</h2>';
 
 		if ( array() === $entries ) {
-			echo '<p><em>' . esc_html__( 'Nothing yet.', 'theblue-email-forms' ) . '</em></p></div>';
+			echo '<p class="tbef-empty">' . esc_html__( 'Nothing yet.', 'theblue-email-forms' ) . '</p></section>';
 			return;
 		}
 
-		echo '<table class="widefat striped"><thead><tr>';
+		echo '<div class="tbef-scroll"><table class="tbef-table"><thead><tr>';
 		foreach ( array( __( 'When', 'theblue-email-forms' ), __( 'Form', 'theblue-email-forms' ), __( 'Address', 'theblue-email-forms' ), __( 'Result', 'theblue-email-forms' ) ) as $heading ) {
 			echo '<th>' . esc_html( $heading ) . '</th>';
 		}
@@ -434,13 +456,13 @@ class Settings_Page {
 			echo '<tr><td>' . esc_html( wp_date( (string) get_option( 'date_format' ) . ' ' . (string) get_option( 'time_format' ), (int) $e['time'] ) ) . '</td>';
 			echo '<td>' . esc_html( $source . ': ' . (string) ( $e['label'] ?? '' ) ) . '</td>';
 			echo '<td>' . esc_html( (string) ( $e['email'] ?? '' ) ) . '</td>';
-			echo '<td>' . esc_html( self::describe( (string) ( $e['outcome'] ?? '' ), (string) ( $e['detail'] ?? '' ) ) ) . '</td></tr>';
+			echo '<td class="tbef-result tbef-result--' . esc_attr( sanitize_html_class( (string) ( $e['outcome'] ?? '' ) ) ) . '">' . esc_html( self::describe( (string) ( $e['outcome'] ?? '' ), (string) ( $e['detail'] ?? '' ) ) ) . '</td></tr>';
 		}
 
-		echo '</tbody></table><p>';
+		echo '</tbody></table></div><div class="tbef-section__foot">';
 		$this->form_open( 'clear_log' );
 		submit_button( __( 'Clear', 'theblue-email-forms' ), 'secondary small', 'submit', false );
-		echo '</form></p></div>';
+		echo '</form></div></section>';
 	}
 
 	/**

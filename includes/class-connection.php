@@ -23,7 +23,7 @@ final class Connection {
 	public const OPTION_STATE   = 'tbef_state';
 
 	/** A Website key or a full key: tbe_ and 32 hex characters. */
-	public const KEY_PATTERN = '/^tbe_[a-f0-9]{32}$/';
+	public const KEY_PATTERN = '/^tbe_[a-f0-9]{32}\z/';
 
 	/**
 	 * Whether a value looks like a key the platform issues.

@@ -47,7 +47,8 @@ class Shortcode {
 			self::TAG
 		);
 
-		$classes = implode( ' ', array_map( 'sanitize_html_class', preg_split( '/\s+/', (string) $atts['class'] ) ?: array() ) );
+		$parts   = preg_split( '/\s+/', (string) $atts['class'] );
+		$classes = implode( ' ', array_map( 'sanitize_html_class', false === $parts ? array() : $parts ) );
 
 		return $this->embed->markup( (string) $atts['key'], $classes );
 	}

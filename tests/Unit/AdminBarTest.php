@@ -10,6 +10,7 @@ declare(strict_types=1);
 namespace TheBlueEmail\Forms\Tests\Unit;
 
 use Brain\Monkey\Functions;
+use PHPUnit\Framework\Attributes\Test;
 use TheBlueEmail\Forms\Admin_Bar;
 
 final class AdminBarTest extends TestCase {
@@ -37,7 +38,8 @@ final class AdminBarTest extends TestCase {
 		$this->nodes[] = $node;
 	}
 
-	public function test_it_is_on_until_switched_off(): void {
+	#[Test]
+	public function it_is_on_until_switched_off(): void {
 		self::assertTrue( Admin_Bar::is_enabled() );
 
 		Admin_Bar::set_enabled( false );
@@ -48,7 +50,8 @@ final class AdminBarTest extends TestCase {
 		self::assertTrue( Admin_Bar::is_enabled() );
 	}
 
-	public function test_it_adds_a_link_to_the_settings_page_for_admins(): void {
+	#[Test]
+	public function it_adds_a_link_to_the_settings_page_for_admins(): void {
 		Functions\when( 'current_user_can' )->justReturn( true );
 
 		( new Admin_Bar() )->add_node( $this->bar() );
@@ -60,7 +63,8 @@ final class AdminBarTest extends TestCase {
 		self::assertStringContainsString( 'theblue.email', (string) $this->nodes[0]['title'] );
 	}
 
-	public function test_it_adds_nothing_when_switched_off(): void {
+	#[Test]
+	public function it_adds_nothing_when_switched_off(): void {
 		Functions\when( 'current_user_can' )->justReturn( true );
 		Admin_Bar::set_enabled( false );
 
@@ -69,13 +73,15 @@ final class AdminBarTest extends TestCase {
 		self::assertSame( array(), $this->nodes );
 	}
 
-	public function test_it_adds_nothing_for_people_who_cannot_manage_the_site(): void {
+	#[Test]
+	public function it_adds_nothing_for_people_who_cannot_manage_the_site(): void {
 		( new Admin_Bar() )->add_node( $this->bar() );
 
 		self::assertSame( array(), $this->nodes );
 	}
 
-	public function test_the_icon_is_a_base64_svg_wordpress_can_recolour(): void {
+	#[Test]
+	public function it_makes_the_icon_a_base64_svg_wordpress_can_recolour(): void {
 		$icon = Admin_Bar::icon();
 
 		self::assertStringStartsWith( 'data:image/svg+xml;base64,', $icon );

@@ -129,7 +129,7 @@ final class Contact_Form_7 {
 	 * @return array<string, mixed>
 	 */
 	public static function add_panel( $panels ): array {
-		$panels                = is_array( $panels ) ? $panels : array();
+		$panels               = is_array( $panels ) ? $panels : array();
 		$panels['tbef-panel'] = array(
 			'title'    => 'theblue.email',
 			'callback' => array( self::class, 'render_panel' ),

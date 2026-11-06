@@ -44,5 +44,7 @@
 		<properties>
 			<property name="is_theme" value="false"/>
 		</properties>
+		<!-- WordPress reads a block script's dependencies from <script>.asset.php. -->
+		<exclude-pattern>blocks/*/*.asset.php</exclude-pattern>
 	</rule>
 </ruleset>

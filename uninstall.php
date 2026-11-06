@@ -10,6 +10,6 @@
 
 defined( 'WP_UNINSTALL_PLUGIN' ) || exit;
 
-foreach ( array( 'tbef_api_key', 'tbef_account', 'tbef_state', 'tbef_forms', 'tbef_unallowed_forms', 'tbef_activity' ) as $tbef_option ) {
+foreach ( array( 'tbef_api_key', 'tbef_account', 'tbef_state', 'tbef_forms', 'tbef_unallowed_forms', 'tbef_activity', 'tbef_admin_bar' ) as $tbef_option ) {
 	delete_option( $tbef_option );
 }

@@ -147,7 +147,7 @@ class Gravity_Forms_Addon extends \GFFeedAddOn {
 		return sprintf(
 			/* translators: %s: link to the plugin's settings page. */
 			esc_html__( 'Connect this site to theblue.email first: %s', 'theblue-email-forms' ),
-			'<a href="' . esc_url( admin_url( 'options-general.php?page=' . Settings_Page::SLUG ) ) . '">' . esc_html__( 'Settings, theblue.email', 'theblue-email-forms' ) . '</a>'
+			'<a href="' . esc_url( Settings_Page::url() ) . '">' . esc_html__( 'theblue.email settings', 'theblue-email-forms' ) . '</a>'
 		);
 	}
 

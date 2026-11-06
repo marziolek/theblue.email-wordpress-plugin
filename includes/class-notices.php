@@ -45,7 +45,7 @@ class Notices {
 
 		$screen      = function_exists( 'get_current_screen' ) ? get_current_screen() : null;
 		$screen_id   = $screen ? (string) $screen->id : '';
-		$on_settings = 'settings_page_' . Settings_Page::SLUG === $screen_id;
+		$on_settings = Settings_Page::SCREEN === $screen_id;
 
 		if ( ! $this->connection->is_connected() ) {
 			if ( 'plugins' === $screen_id ) {

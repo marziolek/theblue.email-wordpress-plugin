@@ -19,3 +19,9 @@ phpcs.xml.dist
 phpstan.neon.dist
 phpunit.xml.dist
 .phpunit.result.cache
+/.phpunit.cache
+/.idea
+/.vscode
+/.claude
+.DS_Store
+Thumbs.db

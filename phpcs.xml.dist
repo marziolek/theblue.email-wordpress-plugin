@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+<ruleset name="theblue.email Forms">
+	<description>WordPress Coding Standards (Extra and Docs) over the whole plugin, plus PHP compatibility.</description>
+
+	<file>theblue-email-forms.php</file>
+	<file>uninstall.php</file>
+	<file>includes</file>
+	<file>blocks</file>
+
+	<exclude-pattern>*/vendor/*</exclude-pattern>
+	<exclude-pattern>*/node_modules/*</exclude-pattern>
+	<exclude-pattern>*/tests/*</exclude-pattern>
+
+	<arg name="extensions" value="php"/>
+	<arg value="s"/>
+	<arg name="colors"/>
+
+	<config name="minimum_wp_version" value="6.4"/>
+	<config name="testVersion" value="8.1-"/>
+
+	<rule ref="WordPress-Extra"/>
+	<rule ref="WordPress-Docs"/>
+	<rule ref="PHPCompatibilityWP"/>
+
+	<rule ref="WordPress.WP.I18n">
+		<properties>
+			<property name="text_domain" type="array">
+				<element value="theblue-email-forms"/>
+			</property>
+		</properties>
+	</rule>
+
+	<rule ref="WordPress.NamingConventions.PrefixAllGlobals">
+		<properties>
+			<property name="prefixes" type="array">
+				<element value="tbef"/>
+				<element value="TheBlueEmail\Forms"/>
+			</property>
+		</properties>
+	</rule>
+
+	<!-- Class files are class-*.php; the namespaced names are mapped by includes/autoload.php. -->
+	<rule ref="WordPress.Files.FileName">
+		<properties>
+			<property name="is_theme" value="false"/>
+		</properties>
+		<!-- WordPress reads a block script's dependencies from <script>.asset.php. -->
+		<exclude-pattern>blocks/*/*.asset.php</exclude-pattern>
+	</rule>
+</ruleset>

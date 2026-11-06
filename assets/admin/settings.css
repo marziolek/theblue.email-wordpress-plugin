@@ -1,0 +1,583 @@
+/*
+ * Settings, theblue.email.
+ *
+ * The theblue.email site's system ("Ultramaryna"): one deep ultramarine stage
+ * with white as its accent, then white paper where people read. Instrument
+ * Sans for everything; display sizes condensed through its width axis and set
+ * semibold with tight tracking. Flat: no shadows, no gradients.
+ *
+ * Contrast (WCAG): on the stage #0F1F96, white 12.7:1 and periwinkle #C6CFFF
+ * 8.3:1. On paper, ink #0A1238 18.2:1, slate #55607F 6.2:1, ultramarine 12.7:1,
+ * green #007A48 5.4:1.
+ */
+
+@font-face {
+	font-family: "TBEF Instrument Sans";
+	font-style: normal;
+	font-weight: 400 700;
+	font-stretch: 75% 100%;
+	font-display: swap;
+	src: url("../fonts/instrument-sans-latin-ext.woff2") format("woff2");
+	unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+@font-face {
+	font-family: "TBEF Instrument Sans";
+	font-style: normal;
+	font-weight: 400 700;
+	font-stretch: 75% 100%;
+	font-display: swap;
+	src: url("../fonts/instrument-sans-latin.woff2") format("woff2");
+	unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+.tbef-settings {
+	--tbef-stage: #0f1f96;
+	--tbef-stage-deep: #0a1568;
+	--tbef-soft: #c6cfff;
+	--tbef-rule-on-stage: rgba(255, 255, 255, 0.2);
+	--tbef-paper: #fff;
+	--tbef-ink: #0a1238;
+	--tbef-slate: #55607f;
+	--tbef-line: #dde3f3;
+	--tbef-pale: #f4f6fd;
+	--tbef-green: #007a48;
+	--tbef-radius: 10px;
+	--tbef-radius-lg: 16px;
+	--tbef-font: "TBEF Instrument Sans", "Instrument Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+
+	max-width: 1120px;
+	font-family: var(--tbef-font);
+	color: var(--tbef-ink);
+}
+
+.tbef-settings .wp-header-end {
+	margin: 0;
+}
+
+.tbef-settings code {
+	font-size: 0.9em;
+}
+
+/* ------------------------------------------------------------------
+ * The stage
+ * ------------------------------------------------------------------ */
+
+.tbef-settings .tbef-stage {
+	margin-top: 16px;
+	padding: 28px 40px 40px;
+	background: var(--tbef-stage);
+	color: #fff;
+	border-radius: var(--tbef-radius-lg);
+}
+
+/* Joined to the paper below it when connected. */
+.tbef-settings .tbef-stage:has(+ .tbef-paper) {
+	border-radius: var(--tbef-radius-lg) var(--tbef-radius-lg) 0 0;
+}
+
+.tbef-settings .tbef-stage ::selection {
+	background: var(--tbef-soft);
+	color: var(--tbef-stage);
+}
+
+.tbef-settings .tbef-stage__top {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 16px;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.tbef-settings .tbef-stage__brand {
+	margin: 0;
+	padding: 0;
+	line-height: 0;
+}
+
+.tbef-settings .tbef-stage__brand img {
+	display: block;
+	width: auto;
+	height: 22px;
+}
+
+.tbef-settings .tbef-stage__actions {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 8px;
+	align-items: center;
+}
+
+.tbef-settings .tbef-stage a {
+	color: #fff;
+	text-decoration-thickness: 1px;
+	text-underline-offset: 3px;
+}
+
+.tbef-settings .tbef-stage a:hover {
+	color: var(--tbef-soft);
+}
+
+.tbef-settings .tbef-stage .notice {
+	margin: 24px 0 0;
+	color: var(--tbef-ink);
+}
+
+.tbef-settings .tbef-stage__note {
+	max-width: 56ch;
+	margin: 20px 0 0;
+	font-size: 13px;
+	line-height: 1.55;
+	color: var(--tbef-soft);
+}
+
+/* The connection, set like the site's stats band. */
+.tbef-settings .tbef-facts {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+	margin: 48px 0 0;
+	border-top: 1px solid var(--tbef-rule-on-stage);
+}
+
+.tbef-settings .tbef-facts__item {
+	min-width: 0;
+	padding: 18px 24px 0 0;
+}
+
+.tbef-settings .tbef-facts dt {
+	font-size: 13px;
+	color: var(--tbef-soft);
+}
+
+.tbef-settings .tbef-facts dd {
+	margin: 6px 0 0;
+	font-size: 30px;
+	font-weight: 600;
+	font-stretch: 80%;
+	letter-spacing: -0.025em;
+	line-height: 1.05;
+	overflow-wrap: anywhere;
+}
+
+.tbef-settings .tbef-facts dd code {
+	padding: 0;
+	background: none;
+	color: inherit;
+	font: inherit;
+}
+
+.tbef-settings .tbef-facts__sub {
+	display: block;
+	margin-top: 6px;
+	font-size: 13px;
+	font-weight: 400;
+	font-stretch: 100%;
+	letter-spacing: 0;
+	line-height: 1.4;
+	color: var(--tbef-soft);
+}
+
+/* Not connected yet: the whole job sits on the stage. */
+.tbef-settings .tbef-connect {
+	display: grid;
+	grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+	gap: 32px 56px;
+	align-items: start;
+	margin-top: 56px;
+}
+
+.tbef-settings .tbef-connect__title {
+	margin: 0;
+	padding: 0;
+	font-size: clamp(40px, 5.4vw, 64px);
+	font-weight: 600;
+	font-stretch: 80%;
+	letter-spacing: -0.03em;
+	line-height: 0.98;
+	color: #fff;
+}
+
+/* The two steps are a sequence, numbered as the site numbers its own. */
+.tbef-settings .tbef-steps {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	counter-reset: tbef-step;
+}
+
+.tbef-settings .tbef-steps li {
+	position: relative;
+	margin: 0;
+	padding: 2px 0 22px 48px;
+	font-size: 15px;
+	line-height: 1.5;
+	counter-increment: tbef-step;
+}
+
+.tbef-settings .tbef-steps li + li {
+	padding-top: 22px;
+	border-top: 1px solid var(--tbef-rule-on-stage);
+}
+
+.tbef-settings .tbef-steps li::before {
+	content: counter(tbef-step);
+	position: absolute;
+	left: 0;
+	font-size: 34px;
+	font-weight: 600;
+	font-stretch: 80%;
+	line-height: 0.8;
+	color: #8fb0ff;
+}
+
+.tbef-settings .tbef-steps li + li::before {
+	top: 22px;
+}
+
+.tbef-settings .tbef-steps strong {
+	font-weight: 600;
+}
+
+.tbef-settings .tbef-steps .tbef-inline {
+	display: block;
+}
+
+.tbef-settings .tbef-keyfield {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 8px;
+	margin-top: 14px;
+}
+
+.tbef-settings .tbef-keyfield input {
+	flex: 1 1 220px;
+	min-height: 44px;
+	margin: 0;
+	padding: 0 16px;
+	border: 1px solid rgba(255, 255, 255, 0.4);
+	border-radius: var(--tbef-radius);
+	background: var(--tbef-stage-deep);
+	color: #fff;
+	font-size: 14px;
+	box-shadow: none;
+}
+
+.tbef-settings .tbef-keyfield input::placeholder {
+	color: var(--tbef-soft);
+	opacity: 0.8;
+}
+
+.tbef-settings .tbef-keyfield input:focus {
+	border-color: #fff;
+	outline: 2px solid #fff;
+	outline-offset: 2px;
+	box-shadow: none;
+}
+
+/* ------------------------------------------------------------------
+ * Buttons: pills, as on the site
+ * ------------------------------------------------------------------ */
+
+.tbef-settings .tbef-inline {
+	display: inline-block;
+	margin: 0;
+}
+
+.wp-core-ui .tbef-settings .button {
+	min-height: 36px;
+	padding: 0 18px;
+	border-radius: 999px;
+	font-family: var(--tbef-font);
+	font-size: 13px;
+	font-weight: 600;
+	line-height: 34px;
+	box-shadow: none;
+	text-shadow: none;
+}
+
+.wp-core-ui .tbef-settings .button.button-small {
+	min-height: 28px;
+	padding: 0 12px;
+	font-size: 12px;
+	line-height: 26px;
+}
+
+.wp-core-ui .tbef-settings .button:focus-visible {
+	outline: 2px solid var(--tbef-stage);
+	outline-offset: 2px;
+	box-shadow: none;
+}
+
+/* On paper: an outlined pill in ultramarine. */
+.wp-core-ui .tbef-settings .tbef-paper .button {
+	border: 1px solid var(--tbef-stage);
+	background: var(--tbef-paper);
+	color: var(--tbef-stage);
+}
+
+.wp-core-ui .tbef-settings .tbef-paper .button:hover {
+	background: var(--tbef-pale);
+}
+
+/* On the stage: a white pill for the main action, outlines for the rest. */
+.wp-core-ui .tbef-settings .tbef-stage .button {
+	border: 1px solid rgba(255, 255, 255, 0.5);
+	background: transparent;
+	color: #fff;
+}
+
+.wp-core-ui .tbef-settings .tbef-stage .button:hover {
+	border-color: #fff;
+	background: rgba(255, 255, 255, 0.08);
+}
+
+.wp-core-ui .tbef-settings .tbef-stage .button.button-primary {
+	min-height: 44px;
+	padding: 0 26px;
+	border-color: #fff;
+	background: #fff;
+	color: var(--tbef-stage);
+	font-size: 14px;
+	line-height: 42px;
+}
+
+.wp-core-ui .tbef-settings .tbef-stage .button.button-primary:hover {
+	border-color: var(--tbef-soft);
+	background: var(--tbef-soft);
+}
+
+.wp-core-ui .tbef-settings .tbef-stage .button.delete {
+	border-color: transparent;
+	color: var(--tbef-soft);
+	text-decoration: underline;
+	text-underline-offset: 3px;
+}
+
+.wp-core-ui .tbef-settings .tbef-stage .button.delete:hover {
+	background: transparent;
+	color: #fff;
+}
+
+.wp-core-ui .tbef-settings .tbef-stage .button:focus-visible {
+	outline-color: #fff;
+}
+
+/* ------------------------------------------------------------------
+ * The paper
+ * ------------------------------------------------------------------ */
+
+.tbef-settings .tbef-paper {
+	padding: 8px 40px 16px;
+	background: var(--tbef-paper);
+	border: 1px solid var(--tbef-line);
+	border-top: 0;
+	border-radius: 0 0 var(--tbef-radius-lg) var(--tbef-radius-lg);
+}
+
+.tbef-settings .tbef-section {
+	padding: 32px 0;
+}
+
+.tbef-settings .tbef-section + .tbef-section {
+	border-top: 1px solid var(--tbef-line);
+}
+
+.tbef-settings .tbef-section__title {
+	margin: 0;
+	padding: 0;
+	font-size: 30px;
+	font-weight: 600;
+	font-stretch: 80%;
+	letter-spacing: -0.025em;
+	line-height: 1.05;
+	color: var(--tbef-ink);
+}
+
+.tbef-settings .tbef-section__lead {
+	max-width: 72ch;
+	margin: 10px 0 20px;
+	font-size: 14px;
+	line-height: 1.6;
+	color: var(--tbef-slate);
+}
+
+.tbef-settings .tbef-section__title + .tbef-scroll {
+	margin-top: 20px;
+}
+
+.tbef-settings .tbef-section__foot {
+	margin-top: 16px;
+}
+
+.tbef-settings .tbef-empty {
+	margin: 16px 0 0;
+	padding: 18px 20px;
+	border-radius: var(--tbef-radius);
+	background: var(--tbef-pale);
+	font-size: 14px;
+	color: var(--tbef-slate);
+}
+
+.tbef-settings .description {
+	margin-top: 12px;
+	font-size: 12px;
+	font-style: normal;
+	color: var(--tbef-slate);
+}
+
+.tbef-settings .tbef-scroll {
+	overflow-x: auto;
+}
+
+.tbef-settings .tbef-table {
+	width: 100%;
+	border-collapse: collapse;
+	font-size: 14px;
+}
+
+.tbef-settings .tbef-table th {
+	padding: 0 16px 10px 0;
+	border-bottom: 1px solid var(--tbef-ink);
+	font-size: 12px;
+	font-weight: 500;
+	text-align: left;
+	color: var(--tbef-slate);
+	white-space: nowrap;
+}
+
+.tbef-settings .tbef-table td {
+	padding: 14px 16px 14px 0;
+	border-bottom: 1px solid var(--tbef-line);
+	vertical-align: middle;
+	line-height: 1.45;
+}
+
+.tbef-settings .tbef-table td strong {
+	font-weight: 600;
+}
+
+.tbef-settings .tbef-code {
+	padding: 4px 8px;
+	border-radius: 6px;
+	background: var(--tbef-pale);
+	color: var(--tbef-stage);
+	user-select: all;
+	white-space: nowrap;
+}
+
+.tbef-settings .tbef-copy {
+	margin-left: 6px;
+	vertical-align: middle;
+}
+
+.tbef-settings .tbef-result--subscribed {
+	color: var(--tbef-green);
+}
+
+/* Status: a word in a soft pill, never colour alone. */
+.tbef-settings .tbef-pill {
+	display: inline-block;
+	padding: 3px 10px;
+	border-radius: 999px;
+	background: var(--tbef-pale);
+	font-size: 12px;
+	font-weight: 500;
+	line-height: 1.4;
+	color: var(--tbef-slate);
+	white-space: nowrap;
+}
+
+.tbef-settings .tbef-pill--live {
+	background: var(--tbef-soft);
+	color: var(--tbef-stage);
+}
+
+.tbef-settings .tbef-pill--ok {
+	background: #e3f5ec;
+	color: var(--tbef-green);
+}
+
+.tbef-settings .tbef-integrations {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.tbef-settings .tbef-integration {
+	display: grid;
+	grid-template-columns: 200px auto 1fr;
+	gap: 6px 16px;
+	align-items: baseline;
+	margin: 0;
+	padding: 14px 0;
+	border-top: 1px solid var(--tbef-line);
+	font-size: 14px;
+}
+
+.tbef-settings .tbef-integration__name {
+	font-weight: 600;
+}
+
+.tbef-settings .tbef-integration .tbef-pill {
+	justify-self: start;
+}
+
+.tbef-settings .tbef-integration__how {
+	line-height: 1.5;
+	color: var(--tbef-slate);
+}
+
+/* ------------------------------------------------------------------
+ * Display
+ * ------------------------------------------------------------------ */
+
+.tbef-settings .tbef-check {
+	margin: 16px 0 4px;
+	font-size: 14px;
+}
+
+.tbef-settings .tbef-check input[type="checkbox"] {
+	margin: 0 8px 0 0;
+}
+
+/* ------------------------------------------------------------------
+ * Narrow screens
+ * ------------------------------------------------------------------ */
+
+@media (max-width: 960px) {
+	.tbef-settings .tbef-connect {
+		grid-template-columns: 1fr;
+		margin-top: 40px;
+	}
+
+	.tbef-settings .tbef-integration {
+		grid-template-columns: auto 1fr;
+	}
+
+	.tbef-settings .tbef-integration__how {
+		grid-column: 1 / -1;
+	}
+}
+
+@media (max-width: 600px) {
+	.tbef-settings .tbef-stage {
+		padding: 20px 20px 28px;
+	}
+
+	.tbef-settings .tbef-paper {
+		padding: 0 20px 8px;
+	}
+
+	.tbef-settings .tbef-facts {
+		grid-template-columns: 1fr;
+		margin-top: 32px;
+	}
+
+	.tbef-settings .tbef-facts__item {
+		padding-right: 0;
+	}
+
+	.tbef-settings .tbef-facts dd {
+		font-size: 24px;
+	}
+}

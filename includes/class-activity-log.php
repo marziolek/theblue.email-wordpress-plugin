@@ -63,7 +63,7 @@ class Activity_Log {
 	}
 
 	/**
-	 * ada@example.com becomes a***@example.com.
+	 * Masks an address: ada@example.com becomes a***@example.com.
 	 *
 	 * @param string $email The address.
 	 */

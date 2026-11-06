@@ -39,7 +39,7 @@ class Site_Health {
 	 * @return array<string, mixed>
 	 */
 	public function add( $tests ): array {
-		$tests                                  = is_array( $tests ) ? $tests : array();
+		$tests                              = is_array( $tests ) ? $tests : array();
 		$tests['direct']['tbef_connection'] = array(
 			'label' => __( 'theblue.email connection', 'theblue-email-forms' ),
 			'test'  => array( $this, 'run' ),

@@ -29,7 +29,7 @@ final class Targets {
 	/**
 	 * Register a resolver.
 	 *
-	 * @param string             $prefix   gf or cf7.
+	 * @param string                $prefix   gf or cf7.
 	 * @param callable(int): string $resolver Takes the id, returns the form key or ''.
 	 */
 	public static function register( string $prefix, callable $resolver ): void {

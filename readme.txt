@@ -2,7 +2,7 @@
 Contributors: theblueemail
 Tags: newsletter, signup form, email marketing, gravity forms, contact form 7
 Requires at least: 6.4
-Tested up to: 6.9
+Tested up to: 7.1
 Requires PHP: 8.1
 Stable tag: 1.1.0
 License: GPLv2 or later

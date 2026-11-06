@@ -129,6 +129,7 @@ class Settings_Page {
 	public function handle_connect(): void {
 		$this->guard( 'connect' );
 
+		// phpcs:ignore WordPress.Security.NonceVerification.Missing -- guard() above checks the nonce and the capability.
 		$key = isset( $_POST['tbef_key'] ) ? trim( sanitize_text_field( wp_unslash( $_POST['tbef_key'] ) ) ) : '';
 
 		if ( ! Connection::is_valid_key_format( $key ) ) {
@@ -178,6 +179,7 @@ class Settings_Page {
 	 */
 	public function handle_allow(): void {
 		$this->guard( 'allow' );
+		// phpcs:ignore WordPress.Security.NonceVerification.Missing -- guard() above checks the nonce and the capability.
 		$key    = isset( $_POST['tbef_form'] ) ? sanitize_key( wp_unslash( $_POST['tbef_form'] ) ) : '';
 		$result = 1 === preg_match( '/^[a-f0-9]{12}$/', $key )
 			? Rest::allow( $key, $this->client, $this->forms, $this->embed )
@@ -202,6 +204,7 @@ class Settings_Page {
 	 */
 	public function handle_display(): void {
 		$this->guard( 'display' );
+		// phpcs:ignore WordPress.Security.NonceVerification.Missing -- guard() above checks the nonce and the capability.
 		Admin_Bar::set_enabled( ! empty( $_POST['tbef_admin_bar'] ) );
 		$this->back( 'success', __( 'Display settings saved.', 'theblue-email-forms' ) );
 	}

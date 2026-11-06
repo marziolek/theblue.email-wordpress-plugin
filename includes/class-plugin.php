@@ -27,11 +27,46 @@ final class Plugin {
 	 */
 	private static ?self $instance = null;
 
+	/**
+	 * The connection.
+	 *
+	 * @var Connection
+	 */
 	private Connection $connection;
+
+	/**
+	 * The platform client.
+	 *
+	 * @var Client
+	 */
 	private Client $client;
+
+	/**
+	 * The cached forms.
+	 *
+	 * @var Forms
+	 */
 	private Forms $forms;
+
+	/**
+	 * The embed printer.
+	 *
+	 * @var Embed
+	 */
 	private Embed $embed;
+
+	/**
+	 * The activity log.
+	 *
+	 * @var Activity_Log
+	 */
 	private Activity_Log $log;
+
+	/**
+	 * The relay for integrations.
+	 *
+	 * @var Relay
+	 */
 	private Relay $relay;
 
 	/**

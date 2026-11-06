@@ -5,7 +5,7 @@
  * @package TheBlueEmail\Forms
  */
 
-define( 'TBEF_VERSION', '1.0.0' );
+define( 'TBEF_VERSION', '1.1.0' );
 define( 'TBEF_FILE', dirname( __DIR__, 2 ) . '/theblue-email-forms.php' );
 define( 'TBEF_DIR', dirname( __DIR__, 2 ) . '/' );
 define( 'TBEF_URL', 'https://example.com/wp-content/plugins/theblue-email-forms/' );

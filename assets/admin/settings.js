@@ -1,4 +1,4 @@
-/* Copy buttons on Settings, theblue.email. */
+/* Copy buttons on the theblue.email page. */
 ( function () {
 	'use strict';
 

@@ -12,3 +12,7 @@
 /phpcs.xml.dist     export-ignore
 /phpstan.neon.dist  export-ignore
 /phpunit.xml.dist   export-ignore
+
+# The build script reads these line by line; keep Unix line endings.
+.distignore        text eol=lf
+*.sh               text eol=lf

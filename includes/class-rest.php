@@ -115,7 +115,7 @@ class Rest {
 			array(
 				'connected'    => $this->connection->is_connected(),
 				'can_manage'   => current_user_can( 'manage_options' ),
-				'settings_url' => admin_url( 'options-general.php?page=' . Settings_Page::SLUG ),
+				'settings_url' => Settings_Page::url(),
 				'site_host'    => Forms::site_host(),
 				'forms'        => $forms,
 				'error'        => $error,

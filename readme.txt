@@ -65,14 +65,14 @@ Settings, Privacy offers suggested text for your privacy policy.
 
 1. Install and activate the plugin.
 2. In theblue.email, open Integrations and generate a Website key.
-3. In WordPress, go to Settings, theblue.email, paste the key and connect.
+3. In WordPress, open theblue.email in the admin menu, paste the key and connect.
 4. Add the "theblue.email form" block to a page, or set up Gravity Forms or Contact Form 7 as described above.
 
 == Frequently Asked Questions ==
 
 = The form shows "Add this domain in theblue.email settings" =
 
-The form does not allow your site yet. Go to Settings, theblue.email and click "Allow this site" next to the form, or select the block and use the button in its settings. `www.example.com` and `example.com` are different sites.
+The form does not allow your site yet. Open theblue.email in the admin menu and click "Allow this site" next to the form, or select the block and use the button in its settings. `www.example.com` and `example.com` are different sites.
 
 = A form I placed shows nothing =
 
@@ -80,7 +80,7 @@ It is a draft in theblue.email. Publish it there; the page shows it right away, 
 
 = Do signups from Gravity Forms or Contact Form 7 need JavaScript? =
 
-Yes, for the proof-of-work check. Without JavaScript the contact form still sends, but theblue.email refuses the newsletter signup. Settings, theblue.email lists recent signups and why any was refused.
+Yes, for the proof-of-work check. Without JavaScript the contact form still sends, but theblue.email refuses the newsletter signup. The theblue.email page in the admin menu lists recent signups and why any was refused.
 
 = Which plans does this work on? =
 
@@ -90,13 +90,17 @@ Every theblue.email plan, including Free. Forms count towards your plan's live f
 
 Add `define( 'TBEF_BEHIND_CLOUDFLARE', true );` to wp-config.php so the visitor's real IP is used for rate limits. Behind another proxy, use the `tbef_visitor_ip` filter.
 
+= How do I remove the theblue.email link from the toolbar? =
+
+Open theblue.email in the admin menu and untick "Show a theblue.email link in the toolbar" under Display. Only people who can manage the site see the link.
+
 = Is my key safe? =
 
 It is stored encrypted and never shown again in full. Code running on your site can still read it, which is why a Website key can do nothing but forms. Revoke it in theblue.email at any time.
 
 == Screenshots ==
 
-1. Settings, theblue.email: the connection, your forms with their shortcodes, and the "Allow this site" button.
+1. The theblue.email page: the connection, your forms with their shortcodes, and the "Allow this site" button.
 2. The block in the editor, with the form chosen in the sidebar.
 3. A Gravity Forms feed sending signups to a theblue.email form.
 4. The theblue.email tab in the Contact Form 7 editor.

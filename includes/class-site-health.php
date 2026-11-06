@@ -62,7 +62,7 @@ class Site_Health {
 				'color' => 'blue',
 			),
 			'description' => '<p>' . esc_html__( 'Forms and signups from Gravity Forms and Contact Form 7 reach your theblue.email account.', 'theblue-email-forms' ) . '</p>',
-			'actions'     => '<p><a href="' . esc_url( Settings_Page::url() ) . '">' . esc_html__( 'Settings, theblue.email', 'theblue-email-forms' ) . '</a></p>',
+			'actions'     => '<p><a href="' . esc_url( Settings_Page::url() ) . '">' . esc_html__( 'theblue.email settings', 'theblue-email-forms' ) . '</a></p>',
 			'test'        => 'tbef_connection',
 		);
 

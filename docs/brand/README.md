@@ -18,7 +18,7 @@ Where it is used:
 
 | Surface | File | The one bold thing |
 |---|---|---|
-| Settings, theblue.email | `assets/admin/settings.css` | The connection set on the stage like the site's stats band; when not connected, the whole job (title, two steps, key field) sits on the stage |
+| The theblue.email page | `assets/admin/settings.css` | The connection set on the stage like the site's stats band; when not connected, the whole job (title, two steps, key field) sits on the stage |
 | Block preview in the editor | `blocks/form/editor.css` | The form's name in the condensed display face on a paper card |
 | Block icon | `blocks/form/editor.js` | An outlined field and a pill button: at 24px a signup form reads where the corgi would not |
 | WordPress.org banner | `docs/brand/banner.html` | The site's hero headline treatment, with a placed form running off the bottom edge |

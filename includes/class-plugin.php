@@ -69,6 +69,7 @@ final class Plugin {
 
 		( new Shortcode( $plugin->embed ) )->register();
 		Privacy::register();
+		( new Admin_Bar() )->register();
 
 		if ( is_admin() ) {
 			( new Settings_Page( $plugin->connection, $plugin->client, $plugin->forms, $plugin->embed, $plugin->log ) )->register();

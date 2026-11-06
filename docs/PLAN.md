@@ -152,7 +152,7 @@ theblue-email-forms/
 │   ├── class-embed.php          enqueues tbe-embed.js once, tbeEmbed.restUrl inline, prints the div
 │   ├── class-shortcode.php      [theblue_email_form]
 │   ├── class-block.php          registers blocks/form, render callback
-│   ├── class-settings-page.php  Settings > theblue.email
+│   ├── class-settings-page.php  theblue.email (top-level admin menu)
 │   ├── class-notices.php        admin notices: not connected, key revoked, hostname not allowed
 │   └── class-site-health.php    one Site Health test: connection reachable and valid
 ├── blocks/form/
@@ -172,7 +172,7 @@ theblue-email-forms/
 
 ### 5.3 Behaviour
 
-**Connection.** Settings > theblue.email. One field for the key, a Connect button. On
+**Connection.** The theblue.email page, a top-level admin menu item with a toolbar link the owner can switch off under Display. One field for the key, a Connect button. On
 submit (nonce, `manage_options`) the plugin calls `GET /account`; success stores the key
 (encrypted with a key derived from `wp_salt('auth')`, prefix kept in clear for display as
 `tbe_a3f9...`) and the account summary, and loads the forms. Failure shows the platform's

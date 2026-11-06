@@ -78,10 +78,6 @@ msgstr "theblue.email"
 msgid "Forms and signups from Gravity Forms and Contact Form 7 reach your theblue.email account."
 msgstr "Formularze i zapisy z Gravity Forms oraz Contact Form 7 trafiają na Twoje konto theblue.email."
 
-#: includes/class-site-health.php:65 includes/integrations/class-contact-form-7.php:171 includes/integrations/class-gravity-forms-addon.php:150
-msgid "Settings, theblue.email"
-msgstr "Ustawienia, theblue.email"
-
 #: includes/class-site-health.php:70
 msgid "This site is not connected to theblue.email"
 msgstr "Ta strona nie jest połączona z theblue.email"
@@ -581,3 +577,27 @@ msgstr "Wybierz formularz do wyświetlenia."
 #: blocks/form/editor.js:135
 msgid "There are no forms in your theblue.email account yet. Create one under Forms in theblue.email."
 msgstr "Na Twoim koncie theblue.email nie ma jeszcze formularzy. Utwórz formularz w sekcji Formularze w theblue.email."
+
+#: includes/class-admin-bar.php includes/class-site-health.php includes/integrations/class-contact-form-7.php includes/integrations/class-gravity-forms-addon.php
+msgid "theblue.email settings"
+msgstr "Ustawienia theblue.email"
+
+#: includes/class-settings-page.php
+msgid "Display settings saved."
+msgstr "Zapisano ustawienia wyświetlania."
+
+#: includes/class-settings-page.php
+msgid "Display"
+msgstr "Wyświetlanie"
+
+#: includes/class-settings-page.php
+msgid "Show a theblue.email link in the toolbar at the top of the screen"
+msgstr "Pokazuj odnośnik theblue.email na pasku narzędzi u góry ekranu"
+
+#: includes/class-settings-page.php
+msgid "Only people who can manage this site see it."
+msgstr "Widzą go tylko osoby, które mogą zarządzać tą witryną."
+
+#: includes/class-settings-page.php
+msgid "Save"
+msgstr "Zapisz"

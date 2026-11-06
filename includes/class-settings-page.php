@@ -1,6 +1,6 @@
 <?php
 /**
- * Settings, theblue.email.
+ * The theblue.email page, a top-level item in the admin menu.
  *
  * @package TheBlueEmail\Forms
  */
@@ -14,14 +14,19 @@ defined( 'ABSPATH' ) || exit;
 /**
  * Connect and disconnect, the account's forms with their shortcodes and an
  * "Allow this site" button, which integrations are active, and the recent
- * signups they relayed. Every action is an admin-post form with a nonce and
+ * signups they relayed, and whether the toolbar shows a link here. Every action is an admin-post form with a nonce and
  * the manage_options capability.
  */
 class Settings_Page {
 
 	public const SLUG = 'theblue-email-forms';
 
-	private const ACTIONS = array( 'connect', 'disconnect', 'refresh', 'allow', 'clear_log' );
+	/**
+	 * The page's screen ID.
+	 */
+	public const SCREEN = 'toplevel_page_' . self::SLUG;
+
+	private const ACTIONS = array( 'connect', 'disconnect', 'refresh', 'allow', 'clear_log', 'display' );
 
 	/**
 	 * Constructor.
@@ -45,6 +50,7 @@ class Settings_Page {
 	 */
 	public function register(): void {
 		add_action( 'admin_menu', array( $this, 'menu' ) );
+		add_action( 'admin_init', array( $this, 'redirect_old_url' ) );
 		add_filter( 'plugin_action_links_' . plugin_basename( TBEF_FILE ), array( $this, 'action_links' ) );
 
 		foreach ( self::ACTIONS as $action ) {
@@ -53,15 +59,16 @@ class Settings_Page {
 	}
 
 	/**
-	 * The page under Settings.
+	 * The page, a top-level menu item with the corgi.
 	 */
 	public function menu(): void {
-		$hook = add_options_page(
+		$hook = add_menu_page(
 			__( 'theblue.email', 'theblue-email-forms' ),
 			__( 'theblue.email', 'theblue-email-forms' ),
 			'manage_options',
 			self::SLUG,
-			array( $this, 'render' )
+			array( $this, 'render' ),
+			Admin_Bar::icon()
 		);
 
 		if ( $hook ) {
@@ -86,7 +93,22 @@ class Settings_Page {
 	 * The page's URL.
 	 */
 	public static function url(): string {
-		return admin_url( 'options-general.php?page=' . self::SLUG );
+		return admin_url( 'admin.php?page=' . self::SLUG );
+	}
+
+	/**
+	 * The page lived under Settings in 1.0.0: send bookmarks there to its new place.
+	 */
+	public function redirect_old_url(): void {
+		global $pagenow;
+
+		// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- a read-only redirect, compared to a constant.
+		$page = isset( $_GET['page'] ) ? sanitize_key( wp_unslash( $_GET['page'] ) ) : '';
+
+		if ( 'options-general.php' === $pagenow && self::SLUG === $page && current_user_can( 'manage_options' ) ) {
+			wp_safe_redirect( self::url() );
+			exit;
+		}
 	}
 
 	/**
@@ -176,6 +198,15 @@ class Settings_Page {
 	}
 
 	/**
+	 * Show or hide the toolbar link.
+	 */
+	public function handle_display(): void {
+		$this->guard( 'display' );
+		Admin_Bar::set_enabled( ! empty( $_POST['tbef_admin_bar'] ) );
+		$this->back( 'success', __( 'Display settings saved.', 'theblue-email-forms' ) );
+	}
+
+	/**
 	 * Capability and nonce for an action.
 	 *
 	 * @param string $action The action.
@@ -235,9 +266,13 @@ class Settings_Page {
 			$this->forms_card();
 			$this->integrations_card();
 			$this->activity_card();
+			$this->display_card();
 			echo '</div>';
 		} else {
 			$this->connect_card();
+			echo '<div class="tbef-paper">';
+			$this->display_card();
+			echo '</div>';
 		}
 
 		echo '</div>';
@@ -463,6 +498,20 @@ class Settings_Page {
 		$this->form_open( 'clear_log' );
 		submit_button( __( 'Clear', 'theblue-email-forms' ), 'secondary small', 'submit', false );
 		echo '</form></div></section>';
+	}
+
+	/**
+	 * Where the plugin shows itself in the admin.
+	 */
+	private function display_card(): void {
+		echo '<section class="tbef-section"><h2 class="tbef-section__title">' . esc_html__( 'Display', 'theblue-email-forms' ) . '</h2>';
+		$this->form_open( 'display' );
+		echo '<p class="tbef-check"><label><input type="checkbox" name="tbef_admin_bar" value="1"' . checked( Admin_Bar::is_enabled(), true, false ) . '> ';
+		echo esc_html__( 'Show a theblue.email link in the toolbar at the top of the screen', 'theblue-email-forms' ) . '</label></p>';
+		echo '<p class="description">' . esc_html__( 'Only people who can manage this site see it.', 'theblue-email-forms' ) . '</p>';
+		echo '<div class="tbef-section__foot">';
+		submit_button( __( 'Save', 'theblue-email-forms' ), 'secondary small', 'submit', false );
+		echo '</div></form></section>';
 	}
 
 	/**

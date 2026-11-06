@@ -48,6 +48,7 @@ final class Gravity_Forms {
 	 */
 	public static function register_addon(): void {
 		static $done = false;
+		// @phpstan-ignore function.alreadyNarrowedType (the stub always has it; a real install might not.)
 		if ( $done || ! method_exists( 'GFForms', 'include_feed_addon_framework' ) ) {
 			return;
 		}

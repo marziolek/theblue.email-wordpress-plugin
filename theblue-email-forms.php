@@ -3,7 +3,7 @@
  * Plugin Name:       theblue.email Forms
  * Plugin URI:        https://theblue.email/wordpress
  * Description:       Place your theblue.email signup forms on your site with a block or a shortcode, and collect newsletter signups from Gravity Forms and Contact Form 7.
- * Version:           1.1.0
+ * Version:           1.1.1
  * Requires at least: 6.4
  * Requires PHP:      8.1
  * Author:            theblue.email
@@ -20,7 +20,7 @@ declare(strict_types=1);
 
 defined( 'ABSPATH' ) || exit;
 
-define( 'TBEF_VERSION', '1.1.0' );
+define( 'TBEF_VERSION', '1.1.1' );
 define( 'TBEF_FILE', __FILE__ );
 define( 'TBEF_DIR', plugin_dir_path( __FILE__ ) );
 define( 'TBEF_URL', plugin_dir_url( __FILE__ ) );

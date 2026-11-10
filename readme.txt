@@ -4,7 +4,7 @@ Tags: newsletter, signup form, email marketing, gravity forms, contact form 7
 Requires at least: 6.4
 Tested up to: 7.1
 Requires PHP: 8.1
-Stable tag: 1.1.0
+Stable tag: 1.1.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -107,6 +107,9 @@ It is stored encrypted and never shown again in full. Code running on your site 
 
 == Changelog ==
 
+= 1.1.1 =
+* The admin menu and toolbar now show the theblue.email icon, a blue square with rounded corners, in its own blue.
+
 = 1.1.0 =
 * The theblue.email page is now its own item in the admin menu, with an icon. Links to the old Settings page redirect there.
 * A theblue.email link in the toolbar for people who can manage the site. Switch it off under Display on the theblue.email page.
@@ -116,6 +119,9 @@ It is stored encrypted and never shown again in full. Code running on your site 
 * First release: block, shortcode, one-click allowed domain, Gravity Forms feed add-on, Contact Form 7 integration, Site Health test.
 
 == Upgrade Notice ==
+
+= 1.1.1 =
+The admin menu and toolbar show the theblue.email icon.
 
 = 1.1.0 =
 The theblue.email page moves from Settings to its own admin menu item, and a toolbar link is added (it can be switched off).

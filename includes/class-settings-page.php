@@ -59,7 +59,8 @@ class Settings_Page {
 	}
 
 	/**
-	 * The page, a top-level menu item with the corgi.
+	 * The page, a top-level menu item with the site's icon. 'none' leaves the
+	 * icon box empty for Admin_Bar::styles() to paint in the icon's own blue.
 	 */
 	public function menu(): void {
 		$hook = add_menu_page(
@@ -68,7 +69,7 @@ class Settings_Page {
 			'manage_options',
 			self::SLUG,
 			array( $this, 'render' ),
-			Admin_Bar::icon()
+			'none'
 		);
 
 		if ( $hook ) {

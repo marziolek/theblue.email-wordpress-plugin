@@ -5,3 +5,17 @@
 .phpunit.result.cache
 .phpunit.cache/
 composer.lock
+
+# Development files stay on the developer's machine. The repository holds the
+# plugin as WordPress.org ships it, its directory assets and what publishes it.
+/tests/
+/docs/
+/CLAUDE.md
+/README.md
+/composer.json
+/phpcs.xml.dist
+/phpstan.neon.dist
+/phpunit.xml.dist
+/.gitattributes
+/.github/workflows/ci.yml
+/.claude/
